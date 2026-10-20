@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Win the Backyard · Past Social Work</title>
+<meta name="description" content="Sam's Club 'Win the Backyard' paid social campaign, March 2021. Design work by Peter Stamenoff.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f3f0;
+    --surface: #ffffff;
+    --ink: #17181a;
+    --muted: #6b6d72;
+    --line: #dddbd6;
+    --accent: #0067a0;
+    --radius: 10px;
+    --gap: clamp(16px, 2.4vw, 28px);
+    --max: 1240px;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font: 400 16px/1.6 Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 16px; }
+  @media (min-width: 720px) { .wrap { padding: 0 32px; } }
+
+  /* Header */
+  header { padding: clamp(48px, 9vw, 112px) 0 clamp(32px, 5vw, 56px); }
+  .eyebrow {
+    font-size: 13px; font-weight: 600; letter-spacing: .08em;
+    text-transform: uppercase; color: var(--accent); margin: 0 0 12px;
+  }
+  h1 {
+    font-size: clamp(26px, 3.6vw, 46px); line-height: 1.1;
+    letter-spacing: -.025em; font-weight: 700; margin: 0 0 24px;
+  }
+  .intro { max-width: none; font-size: clamp(16px, 1.4vw, 18px); line-height: 1.7; margin: 0 0 32px; }
+  .intro p { margin: 0 0 1em; }
+  .intro p:last-child { margin-bottom: 0; }
+  .meta {
+    display: flex; flex-wrap: wrap; gap: 8px 28px;
+    margin: 0; padding: 20px 0 0; border-top: 1px solid var(--line);
+    list-style: none; font-size: 14px; color: var(--muted);
+  }
+  .meta b { display: block; color: var(--ink); font-weight: 600; }
+
+  /* Sections */
+  section { padding: clamp(32px, 5vw, 56px) 0; border-top: 1px solid var(--line); }
+  .section-head {
+    display: flex; align-items: baseline; gap: 14px; margin-bottom: var(--gap);
+  }
+  .num { font-size: 13px; font-weight: 600; color: var(--muted); font-variant-numeric: tabular-nums; }
+  h2 { font-size: clamp(22px, 2.6vw, 30px); letter-spacing: -.015em; margin: 0; font-weight: 700; }
+  h3 {
+    font-size: 13px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase;
+    color: var(--muted); margin: calc(var(--gap) * 1.4) 0 14px;
+  }
+  .section-head + h3 { margin-top: 0; }
+
+  /* Grid */
+  .grid { display: grid; gap: var(--gap); grid-template-columns: 1fr; }
+  @media (min-width: 720px) { .grid.two { grid-template-columns: 1fr 1fr; } }
+
+  @media (min-width: 720px) { .grid.push { grid-template-columns: 2fr 1fr; align-items: start; } }
+  figure { margin: 0; }
+  .shot {
+    display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+    background: #888; border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 8px 24px rgba(0,0,0,.06);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .shot:hover { transform: translateY(-2px); box-shadow: 0 2px 4px rgba(0,0,0,.08), 0 14px 32px rgba(0,0,0,.10); }
+  .shot:focus-visible { outline: 3px solid var(--accent); outline-offset: 3px; }
+  .shot img { display: block; width: 100%; height: auto; }
+  figcaption { font-size: 14px; color: var(--muted); margin-top: 10px; }
+  figcaption b { color: var(--ink); font-weight: 600; }
+
+  /* Closing copy */
+  .closing { padding-bottom: clamp(64px, 10vw, 120px); }
+  .closing-body { max-width: 680px; font-size: 18px; line-height: 1.7; }
+  .closing-body p { margin: 0 0 1em; }
+  .placeholder {
+    border: 1.5px dashed var(--line); border-radius: var(--radius);
+    padding: 20px; color: var(--muted); font-size: 15px;
+  }
+
+  footer { padding: 24px 0 40px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); }
+
+  /* Lightbox */
+  dialog {
+    border: 0; padding: 0; background: transparent; max-width: 100vw; max-height: 100vh;
+    width: 100vw; height: 100vh;
+  }
+  dialog::backdrop { background: rgba(14,15,17,.92); }
+  dialog[open] { display: flex; align-items: center; justify-content: center; }
+  dialog img { max-width: calc(100vw - 32px); max-height: calc(100vh - 96px); border-radius: 6px; }
+  .lb-close {
+    position: fixed; top: 16px; right: 16px; width: 44px; height: 44px;
+    border-radius: 50%; border: 0; background: rgba(255,255,255,.12); color: #fff;
+    font-size: 22px; cursor: pointer;
+  }
+  .lb-close:hover { background: rgba(255,255,255,.22); }
+  .lb-cap { position: fixed; bottom: 20px; left: 0; right: 0; text-align: center; color: #c9cacd; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<header class="wrap">
+  <p class="eyebrow">Past Social Work</p>
+  <h1>Sam’s Club | Win the Backyard Campaign</h1>
+  <div class="intro">
+    <p>Win the Backyard was a seasonal Sam’s Club campaign designed to inspire members to refresh their outdoor spaces while showcasing outdoor furniture and seasonal products.</p>
+    <p>I was the designer for the social media portion, working closely with a copywriter and art director. My focus was on creating engaging visuals with clear messaging, strong visual hierarchy, and a consistent brand experience.</p>
+    <p>I’ve included my design mockups and animation notes to show how the creative came together.</p>
+  </div>
+  <ul class="meta">
+    <li><b>Client</b>Sam's Club</li>
+    <li><b>Campaign</b>Win the Backyard</li>
+    <li><b>Type</b>Paid social</li>
+    <li><b>Channels</b>Facebook, Pinterest</li>
+    <li><b>Date</b>March 2021</li>
+  </ul>
+</header>
+
+<main class="wrap">
+
+  <section>
+    <div class="section-head"><span class="num">01</span><h2>Carousel Frames</h2></div>
+    <div class="grid">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-carousel-frames-01.jpg" alt="Five carousel frames: 'A 5-star backyard' with member reviews of patio furniture, a grill and beach towels" loading="lazy" width="2800" height="770"></button>
+        <figcaption><b>Set 1</b> · A 5-star backyard</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-carousel-frames-02.jpg" alt="Five carousel frames: 'It's patio time, everybody' with a pool float, gazebo and Adirondack chair" loading="lazy" width="2800" height="770"></button>
+        <figcaption><b>Set 2</b> · It's patio time, everybody</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-animation-notes.jpg" alt="Animation notes for the Win the Backyard carousel frames, describing frame-by-frame motion and transitions" loading="lazy" width="2810" height="1624"></button>
+        <figcaption><b>Animation Notes</b> · Frame-by-frame motion and transitions</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="num">02</span><h2>Facebook</h2></div>
+    <h3>Carousel</h3>
+    <div class="grid">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-facebook-carousel-01.jpg" alt="Facebook carousel ad mockup: 'All about this backyard'" loading="lazy" width="2800" height="1813"></button>
+        <figcaption><b>Carousel A</b> · All about this backyard</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-facebook-carousel-02.jpg" alt="Facebook carousel ad mockup: 'It's patio time, everybody'" loading="lazy" width="2800" height="1813"></button>
+        <figcaption><b>Carousel B</b> · It's patio time, everybody</figcaption>
+      </figure>
+    </div>
+    <h3>Single image · Creator content</h3>
+    <div class="grid two">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-facebook-single-01.jpg" alt="Two Facebook single-image ad variations featuring a fire pit, creator @thehappiesthouse" loading="lazy" width="2000" height="1803"></button>
+        <figcaption><b>Fire pit</b> · @thehappiesthouse, two copy variations</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-facebook-single-02.jpg" alt="Two Facebook single-image ad variations featuring a lit patio, creator @mrslaurenheath" loading="lazy" width="2000" height="1803"></button>
+        <figcaption><b>Patio</b> · @mrslaurenheath, two copy variations</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-head"><span class="num">03</span><h2>Pinterest</h2></div>
+    <h3>Carousel</h3>
+    <div class="grid">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-pinterest-carousel-01.jpg" alt="Pinterest carousel pin mockup: 'A 5-star backyard'" loading="lazy" width="2800" height="1112"></button>
+        <figcaption><b>Carousel A</b> · A 5-star backyard</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-pinterest-carousel-02.jpg" alt="Pinterest carousel pin mockup: 'It's patio time, everybody'" loading="lazy" width="2800" height="1112"></button>
+        <figcaption><b>Carousel B</b> · It's patio time, everybody</figcaption>
+      </figure>
+    </div>
+    <h3>Single image · Creator content</h3>
+    <div class="grid two">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-pinterest-single-01.jpg" alt="Two Pinterest pin variations featuring a fire pit, creator @thehappiesthouse" loading="lazy" width="2000" height="1325"></button>
+        <figcaption><b>Fire pit</b> · @thehappiesthouse, two copy variations</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-pinterest-single-02.jpg" alt="Two Pinterest pin variations featuring a lit patio, creator @mrslaurenheath" loading="lazy" width="2000" height="1325"></button>
+        <figcaption><b>Patio</b> · @mrslaurenheath, two copy variations</figcaption>
+      </figure>
+    </div>
+  </section>
+
+
+  <section>
+    <div class="section-head"><span class="num">04</span><h2>Push Notifications</h2></div>
+    <div class="grid push">
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-push-designers-wide.jpg" alt="Wide push notification image: four featured home designers in circular frames" loading="lazy" width="960" height="480"></button>
+        <figcaption><b>Featured designers</b> · 2:1</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-push-designers-square.jpg" alt="Square push notification image: four featured home designers in circular frames" loading="lazy" width="960" height="960"></button>
+        <figcaption><b>Featured designers</b> · 1:1</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-push-patio-wide.jpg" alt="Wide push notification image: patio fire pit set, 'It's patio time, everybody'" loading="lazy" width="960" height="480"></button>
+        <figcaption><b>It’s patio time, everybody</b> · 2:1</figcaption>
+      </figure>
+      <figure>
+        <button class="shot" type="button"><img src="images/20210312-paidsocial-WinTheBackyard-push-patio-square.jpg" alt="Square push notification image: patio fire pit set, 'It's patio time, everybody'" loading="lazy" width="960" height="960"></button>
+        <figcaption><b>It’s patio time, everybody</b> · 1:1</figcaption>
+      </figure>
+    </div>
+  </section>
+
+</main>
+
+<footer class="wrap">Design work by Peter Stamenoff · Shown for portfolio purposes.</footer>
+
+<dialog id="lb" aria-label="Enlarged image">
+  <button class="lb-close" type="button" aria-label="Close">&times;</button>
+  <img alt="">
+  <p class="lb-cap"></p>
+</dialog>
+
+<script>
+  const lb = document.getElementById('lb');
+  const lbImg = lb.querySelector('img');
+  const lbCap = lb.querySelector('.lb-cap');
+  document.querySelectorAll('.shot').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const img = btn.querySelector('img');
+      lbImg.src = img.src; lbImg.alt = img.alt;
+      lbCap.textContent = btn.closest('figure').querySelector('figcaption').textContent;
+      lb.showModal();
+    });
+  });
+  lb.addEventListener('click', e => { if (e.target !== lbImg) lb.close(); });
+</script>
+</body>
+</html>
